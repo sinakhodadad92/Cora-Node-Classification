@@ -134,9 +134,10 @@ def main():
         preds_global[test_idx] = preds_fold[test_idx]
 
     acc = accuracy_score(data.y, preds_global)
-    write_tsv(preds_global, paper_ids, label_strings)
-    print(f"\n10-fold accuracy = {acc:.2%}  (predictions.tsv written)")
-
+    out_name = f"predictions_{model_name}.tsv"
+    write_tsv(preds_global, paper_ids, label_strings, path=out_name)
+    print(f"\n10-fold accuracy = {acc:.2%}   ({out_name} written)")
+    
 
 if __name__ == "__main__":
     main()
